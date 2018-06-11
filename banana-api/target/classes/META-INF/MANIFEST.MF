@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: banana-api
+Implementation-Version: 0.0.1
+Built-By: aiza
+Implementation-Vendor-Id: banana-api
+Build-Jdk: 1.8.0_172
+Implementation-URL: http://maven.apache.org
+Created-By: Maven Integration for Eclipse
+
