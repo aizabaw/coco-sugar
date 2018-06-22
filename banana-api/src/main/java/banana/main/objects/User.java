@@ -1,5 +1,6 @@
 package banana.main.objects;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
@@ -20,16 +21,16 @@ public class User {
 		this.username = username;
 	}
 	
+	public String getUsername() {
+		return username;
+	}
+	
 	public String getId() {
 		return id;
 	}
 	
 	public void setId(String id) {
 		this.id = id;
-	}
-	
-	public String getUsername() {
-		return username;
 	}
 	
 	public void setUsername(String username) {
@@ -74,6 +75,21 @@ public class User {
 	
 	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
+	}
+	
+	public String toString() {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/YYYY HH:mm:ss");
+		
+		StringBuffer strBuff = new StringBuffer();
+		strBuff.append("ID: " + this.id + ", ");
+		strBuff.append("Name: " + this.username + ", ");
+		strBuff.append("Email: " + this.email + ", ");
+		strBuff.append("Role: " + this.role + ", ");
+		strBuff.append("Date created: " + sdf.format(this.dateCreated));
+		strBuff.append("Last updated: " + sdf.format(this.lastUpdated));
+		
+		return strBuff.toString();
 	}
 
 }

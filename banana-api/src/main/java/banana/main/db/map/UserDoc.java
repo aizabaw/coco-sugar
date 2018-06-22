@@ -1,16 +1,24 @@
-package banana.db.mongo.map;
+package banana.main.db.map;
 
 import java.util.Date;
 
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Field;
 import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
 import org.mongodb.morphia.annotations.Property;
-import org.mongodb.morphia.annotations.Validation;
 
 @Entity ("users")
-@Validation ("{username: {minlength: 8, maxlength: 12},"
-		+ "password: {maxlength: 100}}")
+//@Validation ("{"
+//		+ "$jsonSchema: {"
+//		+ "bsonType: 'object',"
+//		+ " required: ['username', 'password', 'email', 'role', 'date_created', 'last_updated'],"
+//		+ " properties: {"
+//		+ "	  username: {minlength: 8, maxlength: 12},"
+//		+ "	  password: {maxlength: 100}}}}")
+@Indexes (@Index(fields=@Field("username")))
 public class UserDoc {
 	
 	@Id
@@ -30,14 +38,14 @@ public class UserDoc {
 		
 	}
 
-	public UserDoc(String username, String password, String email, String role) {
+	public UserDoc(String username, String password, String email, String role, Date dateCreated, Date lastUpdated) {
 		
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.role = role;
-		this.dateCreated = new Date();
-		this.lastUpdated = new Date();
+		this.dateCreated = dateCreated;
+		this.lastUpdated = lastUpdated;
 		
 	}
 	

@@ -1,4 +1,4 @@
-package banana.main.api.controller;
+package banana.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfigurat
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+import banana.main.dao.MongoConnect;
 
 @SpringBootApplication (exclude = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
 public class Application extends SpringBootServletInitializer {
@@ -17,6 +19,9 @@ public class Application extends SpringBootServletInitializer {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+		
+		//initialize MongoDB connection pool
+		MongoConnect.connect();
 	}
 
 }
